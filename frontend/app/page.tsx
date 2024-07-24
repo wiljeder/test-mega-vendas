@@ -1,12 +1,9 @@
-import { nextAuthOptions } from "@/config/next-auth";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { Home } from "./Home";
+import { Home } from "./components/Home";
 
 export default async function Page() {
-  const session = await getServerSession(nextAuthOptions);
-
-  if (!session) redirect("/auth/login");
-
-  return <Home />;
+  return (
+    <main>
+      <Home />
+    </main>
+  );
 }
