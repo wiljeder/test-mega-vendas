@@ -9,6 +9,7 @@ export class GroupService {
     return this.prisma.groups.findUnique({
       where: {
         id,
+        deletedAt: null,
       },
       include: {
         Owner: {
@@ -37,6 +38,7 @@ export class GroupService {
     return this.prisma.groups.findMany({
       where: {
         ownerId,
+        deletedAt: null,
       },
       include: {
         Owner: {
