@@ -8,22 +8,34 @@ datasource db {
 }
 
 model User {
-  id             Int    @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
   name           String
-  username       String @unique
+  username       String    @unique
   hashedPassword String
+  Groups         Groups[]
 }
 
 model Groups {
   id             Int        @id @default(autoincrement())
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  deletedAt      DateTime?
   name           String
+  ownerId        Int
   GroupsContacts Contacts[]
+  Owner          User       @relation(fields: [ownerId], references: [id])
 }
 
 model Contacts {
-  id      Int    @id @default(autoincrement())
-  name    String
-  phone   String
-  groupId Int
-  Groups  Groups @relation(fields: [groupId], references: [id])
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  name      String
+  phone     String
+  groupId   Int
+  Groups    Groups    @relation(fields: [groupId], references: [id])
 }
