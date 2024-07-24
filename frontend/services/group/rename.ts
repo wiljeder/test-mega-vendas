@@ -5,7 +5,9 @@ type TProps = {
   name: string;
 };
 
-type TResponse = {} | null;
+type TResponse = {
+  name: string;
+} | null;
 
 export async function groupRename({ id, name }: TProps) {
   return api.put<TResponse>(`/group/${id}`, {
