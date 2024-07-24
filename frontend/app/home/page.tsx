@@ -10,9 +10,5 @@ export default async function Page() {
     id: session?.user?.id as number,
   });
 
-  return (
-    <main>
-      <Home groups={userGroups} />
-    </main>
-  );
+  return <Home groups={userGroups || []} />;
 }
