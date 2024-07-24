@@ -10,9 +10,9 @@ export default async function Layout({
   const session = await getServerSession(nextAuthOptions);
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col flex-grow overflow-hidden">
       <Header name={session?.user.name as string} />
-      {children}
+      <div className="flex pt-[72px] flex-1 overflow-hidden">{children}</div>
     </main>
   );
 }
