@@ -6,6 +6,8 @@ import {
   Param,
   Put,
   Delete,
+  UnprocessableEntityException,
+  NotFoundException,
 } from '@nestjs/common';
 import { GroupService } from './group.service';
 
@@ -15,7 +17,19 @@ export class GroupController {
 
   @Get('by-id/:id')
   async findById(@Param('id') id: string) {
-    return this.groupService.findById(parseInt(id));
+    const numberId = parseInt(id);
+
+    if (isNaN(numberId)) {
+      throw new UnprocessableEntityException('Invalid group id');
+    }
+
+    const group = await this.groupService.findById(numberId);
+
+    if (!group) {
+      throw new NotFoundException('Group not found');
+    }
+
+    return group;
   }
 
   @Get('by-owner-id/:ownerId')
@@ -28,13 +42,37 @@ export class GroupController {
     return this.groupService.create(body.name, body.ownerId);
   }
 
-  @Put('/')
-  async rename(@Body() body: { id: number; name: string }) {
-    return this.groupService.rename(body.id, body.name);
+  @Put(':id')
+  async rename(@Param('id') id: string, @Body() body: { name: string }) {
+    const numberId = parseInt(id);
+
+    if (isNaN(numberId)) {
+      throw new UnprocessableEntityException('Invalid group id');
+    }
+
+    const group = await this.groupService.findById(numberId);
+
+    if (!group) {
+      throw new NotFoundException('Group not found');
+    }
+
+    return this.groupService.rename(numberId, body.name);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    return this.groupService.delete(parseInt(id));
+    const numberId = parseInt(id);
+
+    if (isNaN(numberId)) {
+      throw new UnprocessableEntityException('Invalid group id');
+    }
+
+    const group = await this.groupService.findById(numberId);
+
+    if (!group) {
+      throw new NotFoundException('Group not found');
+    }
+
+    return this.groupService.delete(numberId);
   }
 }
