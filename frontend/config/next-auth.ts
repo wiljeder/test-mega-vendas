@@ -24,15 +24,17 @@ export const nextAuthOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
-        const res = await api.post("/auth/login", credentials);
+        const res = await api.post("/auth/login", {
+          username: credentials?.username,
+          password: credentials?.password,
+        });
 
         return res.data || null;
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user, ...rest }) {
-      console.log({ token, user, rest });
+    async jwt({ token, user }) {
       user && (token.user = user);
       return token;
     },
