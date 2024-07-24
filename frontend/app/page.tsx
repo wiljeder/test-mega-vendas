@@ -1,9 +1,3 @@
-import { Home } from "./components/Home";
-
 export default async function Page() {
-  return (
-    <main>
-      <Home />
-    </main>
-  );
+  return <main>/</main>;
 }
