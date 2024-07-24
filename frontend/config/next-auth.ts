@@ -1,4 +1,5 @@
 import { api } from "@/services/api";
+import { authLogin } from "@/services/auth/login";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -24,7 +25,11 @@ export const nextAuthOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
-        const res = await api.post("/auth/login", {
+        if (!credentials) {
+          return null;
+        }
+
+        const res = await authLogin({
           username: credentials?.username,
           password: credentials?.password,
         });
