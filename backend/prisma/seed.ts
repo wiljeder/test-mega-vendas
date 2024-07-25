@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import * as bcrypt from 'bcrypt';
 
-(async () => {
+async function main() {
   const prisma = new PrismaClient();
 
   try {
@@ -43,5 +43,9 @@ import * as bcrypt from 'bcrypt';
     console.log('Database seeded successfully');
   } catch (error) {
     console.log('Error seeding database:', error);
+  } finally {
+    await prisma.$disconnect();
   }
-})();
+}
+
+main();

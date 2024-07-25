@@ -13,13 +13,11 @@ export const columns: ColumnDef<TGroup>[] = [
     header: "Nome",
   },
   {
-    accessorKey: "owner",
-    header: "Dono",
+    header: "Criador",
     cell: ({ row: { original } }) => original.Owner.name,
   },
   {
-    accessorKey: "GroupsContacts",
-    header: "Quantidade de contatos",
+    header: "Contatos",
     cell: ({ row: { original } }) => original.GroupsContacts.length,
   },
   {

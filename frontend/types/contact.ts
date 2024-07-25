@@ -1,9 +1,9 @@
 import { TDefaultEntityFields } from "./defaultEntityFields";
-import { TGroups } from "./groups";
+import { TGroup } from "./groups";
 
 export type TContact = {
   name: string;
   phone: string;
   groupId: number;
-  Group: TGroups;
+  Group: TGroup;
 } & TDefaultEntityFields;

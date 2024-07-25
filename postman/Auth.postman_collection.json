@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "36c63c6f-034f-4d9d-856a-87250180b118",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30673226",
+		"_collection_link": "https://www.postman.com/dev-ycodify/workspace/mega-vendas/collection/30673226-36c63c6f-034f-4d9d-856a-87250180b118?action=share&source=collection_link&creator=30673226"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Wiljeder\",\n    \"username\": \"wil\",\n    \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"wil\",\n    \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
