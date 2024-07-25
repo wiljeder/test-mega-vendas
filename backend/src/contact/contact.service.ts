@@ -18,7 +18,7 @@ export class ContactService {
   async createMany(
     contacts: { name: string; phone: string; groupId: number }[],
   ) {
-    return this.prisma.contacts.createMany({
+    return this.prisma.contacts.createManyAndReturn({
       data: contacts,
     });
   }

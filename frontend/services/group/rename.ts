@@ -1,3 +1,4 @@
+import { TGroup } from "@/types/groups";
 import { api } from "../api";
 
 type TProps = {
@@ -5,9 +6,7 @@ type TProps = {
   name: string;
 };
 
-type TResponse = {
-  name: string;
-} | null;
+type TResponse = Omit<TGroup, "GroupsContacts" | "Owner"> | null;
 
 export async function groupRename({ id, name }: TProps) {
   return api.put<TResponse>(`/group/${id}`, {

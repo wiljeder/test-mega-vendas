@@ -1,4 +1,5 @@
 import { api } from "../api";
+import { User } from "next-auth";
 
 type TProps = {
   name: string;
@@ -6,7 +7,7 @@ type TProps = {
   password: string;
 };
 
-type TResponse = {};
+type TResponse = User;
 
 export async function authRegister({ name, username, password }: TProps) {
   return api.post<TResponse>("/auth/register", {
