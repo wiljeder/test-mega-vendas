@@ -25,10 +25,6 @@ export class GroupController {
 
     const group = await this.groupService.findById(numberId);
 
-    if (!group) {
-      throw new NotFoundException('Group not found');
-    }
-
     return group;
   }
 
