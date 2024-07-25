@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "dcfaf6f7-b6ec-48e5-b5f2-b8f68a4c8151",
+		"name": "Contact",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30673226",
+		"_collection_link": "https://www.postman.com/dev-ycodify/workspace/mega-vendas/collection/30673226-dcfaf6f7-b6ec-48e5-b5f2-b8f68a4c8151?action=share&source=collection_link&creator=30673226"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"contact 1\",\n    \"phone\": \"558499191919\",\n    \"groupId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/contact",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Batch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"contact 2\",\n        \"phone\": \"558499191111\",\n        \"groupId\": 1\n    },\n    {\n        \"name\": \"contact 3\",\n        \"phone\": \"558499192222\",\n        \"groupId\": 1\n    },\n    {\n        \"name\": \"contact 4\",\n        \"phone\": \"558499193333\",\n        \"groupId\": 2\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3333/contact/batch",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"contact",
+						"batch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3333/contact/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"contact",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
