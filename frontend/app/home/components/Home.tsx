@@ -19,7 +19,7 @@ export function Home({ groups }: Props) {
           <Link href="/group/create">Novo Grupo</Link>
         </Button>
       </div>
-      <DataTable columns={columns} data={Array(20).fill(groups).flat()} />
+      <DataTable columns={columns} data={groups} />
     </div>
   );
 }
