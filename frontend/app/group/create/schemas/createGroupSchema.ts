@@ -21,8 +21,6 @@ export const createGroupSchema = z.object({
         return false;
       }
 
-      console.log("chegou aqui");
-
       try {
         if (file.name.endsWith(".xlsx")) {
           parseXlsxContactFile(file);

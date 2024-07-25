@@ -8,5 +8,9 @@ type TProps = {
 type TResponse = TGroup | null;
 
 export async function groupGetById({ id }: TProps) {
-  return api.get<TResponse>(`/group/by-id/${id}`);
+  try {
+    return api.get<TResponse>(`/group/by-id/${id}`);
+  } catch (err) {
+    return { data: null };
+  }
 }

@@ -12,9 +12,7 @@ export default async function Layout({
   return (
     <main className="flex flex-col flex-grow overflow-hidden">
       <Header name={session?.user.name as string} />
-      <div className="flex pt-[72px] flex-1 overflow-hidden items-center justify-center p-4">
-        {children}
-      </div>
+      <div className="flex pt-[92px] flex-1 overflow-hidden">{children}</div>
     </main>
   );
 }
